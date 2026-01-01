@@ -1,5 +1,6 @@
 import pickle
 import re
+import os
 
 import streamlit as st
 import numpy as np
@@ -112,9 +113,10 @@ if uploaded_file is not None:
     price = df['selling_price']
     df = df[num_features + cat_features]
 
-
-    # Вывод оценок по данным
-    with open('app_data.pkl', 'rb') as f:
+     # Вывод оценок по данным
+    current_dir = os.path.dirname(__file__)
+    file_path = os.path.join(current_dir, 'app_data.pkl')
+    with open(file_path, 'rb') as f:
         model = pickle.load(f)
 
     predictions = model.predict(df)
