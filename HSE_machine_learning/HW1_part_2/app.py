@@ -88,7 +88,7 @@ if uploaded_file is not None:
     # Вывод оценок по данным
     with open('app_data.pkl', 'rb') as f:
         model = pickle.load(f)
-    
+
     predictions = model.predict(df)
     delta = price - predictions
 
