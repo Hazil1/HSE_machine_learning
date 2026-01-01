@@ -114,8 +114,15 @@ if uploaded_file is not None:
 
 
     # Вывод оценок по данным
-    with open('model.pkl', 'rb') as f:
-        model = pickle.load(f)
+    # with open('model.pkl', 'rb') as f:
+    #     model = pickle.load(f)
+
+    @st.cache_resource
+    def load_model():
+        with open('model.pkl', 'rb') as f:
+            return pickle.load(f)
+
+    model = load_model()
 
     predictions = model.predict(df)
     delta = price - predictions
