@@ -43,7 +43,7 @@ def split_torque(torque):
 
 @st.cache_resource
 def load_model():
-    with open('model.pkl', 'rb') as f:
+    with open('app_data.pkl', 'rb') as f:
         return pickle.load(f)
 
 
