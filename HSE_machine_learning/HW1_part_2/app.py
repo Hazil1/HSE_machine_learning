@@ -41,12 +41,6 @@ def split_torque(torque):
         return np.nan
 
 
-@st.cache_resource
-def load_model():
-    with open('app_data.pkl', 'rb') as f:
-        return pickle.load(f)
-
-
 st.title("Оценка стоимости автомобиля с помощью линейной регрессии")
 uploaded_file = st.file_uploader("Выберите CSV файл", type="csv")
 
@@ -120,10 +114,8 @@ if uploaded_file is not None:
 
 
     # Вывод оценок по данным
-    # with open('model.pkl', 'rb') as f:
-    #     model = pickle.load(f)
-
-    model = load_model()
+    with open('app_data.pkl', 'rb') as f:
+        model = pickle.load(f)
 
     predictions = model.predict(df)
     delta = price - predictions
