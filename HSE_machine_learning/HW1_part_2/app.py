@@ -19,7 +19,7 @@ uploaded_file = st.file_uploader("Выберите CSV файл", type="csv")
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     st.write("Загруженные данные (данные без преобразования)")
-    st.dataframe(df.head())
+    st.dataframe(df)
 
     # Выполним преобразование признаков
     for col in ['mileage', 'engine', 'max_power']:
